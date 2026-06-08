@@ -12,24 +12,24 @@ C# Source Generators for use with the Godot Game Engine
 * `SceneTree` class attribute:
   * Provides strongly typed access to the scene hierarchy (via `_` operator)
   * Generates direct access to uniquely named nodes via class properties
-  * [NEW] ISceneTree interface for use with generics (GD4 only)
+  * ISceneTree interface for use with generics (GD4 only)
     * Provides static access to TscnFilePath
-  * [NEW] IInstantiable interface for use with generics (GD4 only)
+  * IInstantiable interface for use with generics (GD4 only)
     * Provides static Instantiate method
-  * [NEW] Custom default scope for uniquely named node properties
+  * Custom default scope for uniquely named node properties
     * Specific properties can be overridden with a partial property (GD4 only)
-* [NEW] `AnimNames` class attribute (GD4 only):
+* `AnimNames` class attribute (GD4 only):
   * Provides strongly typed access to animation names defined in .tres and .tscn files
-* [NEW] `AudioBus` class attribute (GD4 only):
+* `AudioBus` class attribute (GD4 only):
   * Provides strongly typed access to audio bus names and ids
-* [NEW] `AutoEnum` enum/class attribute (GD4 only):
+* `AutoEnum` enum/class attribute (GD4 only):
   * (enum) Generates efficient Str/Parse for enums
   * (class) Generates enum for static data classes (for editor/network use)
 * `Autoload` class attribute:
   * Provide strongly typed access to autoload nodes defined in godot.project
 * `CodeComments` class attribute:
   * Provides a nested static class to access property comments from code (useful for in-game tooltips, etc)
-* [NEW] `GlobalGroups` class attribute (GD4 only):
+* `GlobalGroups` class attribute (GD4 only):
   * Provides strongly typed access to global groups defined in godot.project
 * `GodotOverride` method attribute:
   * Allows use of On*, instead of virtual _* overrides
@@ -37,7 +37,7 @@ C# Source Generators for use with the Godot Game Engine
 * `InputMap` class attribute:
   * Provides strongly typed access to input actions defined in godot.project
   * Attribute option to replace StringName with your own custom object/handler
-* [NEW] `Instantiable` class attribute (GD4 only):
+* `Instantiable` class attribute (GD4 only):
   * Generates configurable static method(s) to instantiate scene
 * `LayerNames` class attribute:
   * Provide strongly typed access to layer names defined in godot.project
@@ -51,17 +51,17 @@ C# Source Generators for use with the Godot Game Engine
   * Generates a static Instantiate method with matching args that calls attributed method as part of the instantiation process
   * (Also generates a protected constructor to ensure proper initialisation - can be deactivated via attribute)
   * (This will be removed in favour of `Instantiable` in next major release)
-* [NEW] `ResourceTree` class attribute (GD4 only):
+* `ResourceTree` class attribute (GD4 only):
   * Provides strongly typed access to the resource hierarchy
-* [NEW] Generators for `Rpc` methods (GD4 only):
+* Generators for `Rpc` methods (GD4 only):
   * Provides strongly typed access to Rpc and RpcId methods
-* [NEW] `Shader` class attribute (GD4 only):
+* `Shader` class attribute (GD4 only):
   * Provides strongly typed access to shader uniforms (or visual shader parameters)
-* [NEW] `ShaderGlobals` class attribute (GD4 only):
+* `ShaderGlobals` class attribute (GD4 only):
   * Provides strongly typed access to global shader uniforms defined in godot.project
-* [NEW] `Singleton` class attribute (GD4 only):
+* `Singleton` class attribute (GD4 only):
   * Provides single instance access to data or scene objects
-* [NEW] `TR` class attribute (GD4 only):
+* `TR` class attribute (GD4 only):
   * Provides strongly typed access to translation locales and keys (as defined in csv)
 * Includes base classes/helpers to create project specific source generators
 
@@ -122,7 +122,7 @@ Install via [NuGet](https://www.nuget.org/packages/GodotSharp.SourceGenerators)
 //[SceneTree("my_scene.tscn")]                  // Use this if tscn has different name
 //[SceneTree("../Scenes/MyScene.tscn")]         // Use relative path if tscn located elsewhere
 //[SceneTree(traverseInstancedScenes: true)]    // Use this to include instanced scenes in current hierarchy
-//[SceneTree(uqScope: Scope.Protected)]         // Use this to specify default scope of uniquely named nodes (default: 'Public') [NEW]
+//[SceneTree(uqScope: Scope.Protected)]         // Use this to specify default scope of uniquely named nodes (default: 'Public')
 public partial class MyScene : Node
 {
     // Default scope of uniquely named nodes can be overridden using partial properties [NEW - GD4 only]
@@ -705,8 +705,8 @@ public partial class MyLayers
     * (Automagically triggers nested changes for Resource and Resource[])
   * Events are triggered only if value is different
   * Initial value can be set without triggering event
-  * [NEW] Defaults can be assigned
-  * [NEW] Events can be paused
+  * Defaults can be assigned
+  * Events can be paused
 #### Examples:
 ```cs
 public partial class NotifyTest : Node
@@ -749,7 +749,6 @@ public partial class NotifyTest : Node
         Value = 2; // Raises changing/changed events
         Value = 2; // No events are raised since value is the same
 
-        // [NEW]
         PauseValueEvents = true;
         Value = 3; // No events raised
         PauseValueEvents = false;
